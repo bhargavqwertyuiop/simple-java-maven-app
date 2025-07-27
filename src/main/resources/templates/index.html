@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Full-Stack Java Application</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> Task Manager</h1>
+            <p>A full-stack Java application with Spring Boot backend</p>
+        </header>
+
+        <main>
+            <!-- Add Task Form -->
+            <section class="add-task-section">
+                <h2>Add New Task</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskTitle">Title:</label>
+                        <input type="text" id="taskTitle" name="title" required placeholder="Enter task title">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description:</label>
+                        <textarea id="taskDescription" name="description" placeholder="Enter task description (optional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+            </section>
+
+            <!-- Filter and Search -->
+            <section class="controls-section">
+                <div class="controls">
+                    <div class="filter-group">
+                        <label for="statusFilter">Filter:</label>
+                        <select id="statusFilter">
+                            <option value="all">All Tasks</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <label for="searchInput">Search:</label>
+                        <input type="text" id="searchInput" placeholder="Search tasks...">
+                        <button type="button" id="clearSearch" class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks Display -->
+            <section class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Your Tasks</h2>
+                    <span id="taskCount" class="task-count">0 tasks</span>
+                </div>
+                <div id="tasksContainer" class="tasks-container">
+                    <div id="loadingSpinner" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading tasks...
+                    </div>
+                    <div id="noTasks" class="no-tasks" style="display: none;">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>No tasks found. Create your first task above!</p>
+                    </div>
+                    <div id="tasksList" class="tasks-list"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Task Manager - Built with Spring Boot & Java</p>
+        </footer>
+    </div>
+
+    <!-- Task Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Task</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editTaskForm" class="task-form">
+                <input type="hidden" id="editTaskId">
+                <div class="form-group">
+                    <label for="editTaskTitle">Title:</label>
+                    <input type="text" id="editTaskTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDescription">Description:</label>
+                    <textarea id="editTaskDescription" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="editTaskCompleted" name="completed">
+                        <span class="checkmark"></span>
+                        Mark as completed
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

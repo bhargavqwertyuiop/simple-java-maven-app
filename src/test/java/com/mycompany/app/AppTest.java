@@ -1,25 +1,18 @@
 package com.mycompany.app;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
- * Unit test for simple App.
+ * Integration tests for the Task Manager application
  */
-public class AppTest
-{
-    @Test
-    public void testAppConstructor() {
-        App app1 = new App();
-        App app2 = new App();
-        assertEquals(app1.getMessage(), app2.getMessage());
-    }
+@SpringBootTest
+@ActiveProfiles("test")
+public class AppTest {
 
     @Test
-    public void testAppMessage()
-    {
-        App app = new App();
-        assertEquals("Hello World!", app.getMessage());
+    public void contextLoads() {
+        // Test that the Spring Boot application context loads successfully
     }
 }
